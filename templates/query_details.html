@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        {% if search_user == -1 %}
+            <p id='queryid'>Query ID = {{query_id}}</p>
+            <p id='username'>Username = {{manquery_username}}</p>
+            <p id='querytext'>Submitted Text = {{manquery_submitted}}</p>
+            <p id='queryresults'>Spelling Errors = {{manquery_results}}</p>
+        {% else %}
+            <p id='queryid'>Query ID = {{query_id}}</p>
+            <p id='username'>Username = {{username}}</p>
+            <p id='querytext'>Submitted Text = {{query_submitted}}</p>
+            <p id='queryresults'>Spelling Errors = {{query_results}}</p>
+        {% endif %}
+    </div>
+{% endblock content %}
+
+cuser=cuser, query_id=query_id, query_submitted=query_submitted, query_results=query_results)

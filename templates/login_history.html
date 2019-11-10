@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        {% if cuser == 'admin' %}
+            <form method="POST" action="" id='userid'>
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <div class="form-group">
+                        {{ form.username.label(class="form-control-label") }}
+                        {% if form.username.errors %}
+                            {{ form.username(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.username.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.username(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </form>
+            {% if user != None %}
+                {% for i in loginhistory %}
+                    <p id='login{{i.id}}_time'>{{login_search_user}} Login #{{i.id}} Time: {{i.login_timestamp}}</p>
+                    <p id='logout{{i.id}}_time'>{{login_search_user}} Logout #{{i.id}} Time: {{i.logout_timestamp}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock content %}

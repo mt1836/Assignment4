@@ -1,0 +1,34 @@
+action: py36, msg: getenv
+cwd: /media/sf_NYU/2019_Fall_Application Security/Assignment2/.tox
+cmd: /usr/bin/python3 -m virtualenv --no-download --python /usr/bin/python3 py36
+Traceback (most recent call last):
+  File "/home/appsec/.local/lib/python3.6/site-packages/virtualenv.py", line 420, in copyfile
+    os.symlink(os.path.realpath(src), dest)
+PermissionError: [Errno 1] Operation not permitted: '/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu' -> '/media/sf_NYU/2019_Fall_Application Security/Assignment2/.tox/py36/lib/python3.6/config-3.6m-x86_64-linux-gnu'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/appsec/.local/lib/python3.6/site-packages/virtualenv.py", line 2632, in <module>
+    main()
+  File "/home/appsec/.local/lib/python3.6/site-packages/virtualenv.py", line 870, in main
+    symlink=options.symlink,
+  File "/home/appsec/.local/lib/python3.6/site-packages/virtualenv.py", line 1156, in create_environment
+    install_python(home_dir, lib_dir, inc_dir, bin_dir, site_packages=site_packages, clear=clear, symlink=symlink)
+  File "/home/appsec/.local/lib/python3.6/site-packages/virtualenv.py", line 1443, in install_python
+    copy_required_files(stdlib_dir, lib_dir, symlink)
+  File "/home/appsec/.local/lib/python3.6/site-packages/virtualenv.py", line 1350, in copy_required_files
+    copyfile(join(src_dir, fn), join(lib_dir, fn), symlink)
+  File "/home/appsec/.local/lib/python3.6/site-packages/virtualenv.py", line 423, in copyfile
+    copy_file_or_folder(src, dest, symlink)
+  File "/home/appsec/.local/lib/python3.6/site-packages/virtualenv.py", line 401, in copy_file_or_folder
+    shutil.copytree(src, dest, symlink)
+  File "/usr/lib/python3.6/shutil.py", line 365, in copytree
+    raise Error(errors)
+shutil.Error: [('/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu/libpython3.6m.so', '/media/sf_NYU/2019_Fall_Application Security/Assignment2/.tox/py36/lib/python3.6/config-3.6m-x86_64-linux-gnu/libpython3.6m.so', "[Errno 1] Operation not permitted: '../../x86_64-linux-gnu/libpython3.6m.so.1' -> '/media/sf_NYU/2019_Fall_Application Security/Assignment2/.tox/py36/lib/python3.6/config-3.6m-x86_64-linux-gnu/libpython3.6m.so'"), ('/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu/libpython3.6.so', '/media/sf_NYU/2019_Fall_Application Security/Assignment2/.tox/py36/lib/python3.6/config-3.6m-x86_64-linux-gnu/libpython3.6.so', "[Errno 1] Operation not permitted: '../../x86_64-linux-gnu/libpython3.6m.so.1' -> '/media/sf_NYU/2019_Fall_Application Security/Assignment2/.tox/py36/lib/python3.6/config-3.6m-x86_64-linux-gnu/libpython3.6.so'")]
+Already using interpreter /usr/bin/python3
+Using base prefix '/usr'

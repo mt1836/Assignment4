@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        {% if cuser == 'admin' %}
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <div class="form-group">
+                        {{ form.username.label(class="form-control-label") }}
+                        {% if form.username.errors %}
+                            {{ form.username(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.username.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.username(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </form>
+            {% for i in queries %}
+                <p id='query{{i.id}}'><a class="nav-item nav-link" href="{{ url_for('history_query', queryid=i.id) }}">Query #{{i.id}}</a></p>
+            {% endfor %}
+        {% else %}
+            <p id='numqueries'>Total number of queries for {{cuser}}= {{numqueries}}</p>
+            {% for i in queries %}
+                <p id='query{{i.id}}'><a class="nav-item nav-link" href="{{ url_for('history_query', queryid=i.id) }}">Query #{{i.id}}</a></p>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock content %}

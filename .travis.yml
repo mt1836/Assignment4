@@ -1,0 +1,16 @@
+language: python
+python:
+  - "3.6"      # current default Python on Travis CI
+
+before install:
+  - sudo apt-get update
+# command to install dependencies
+install:
+  - pip3 install -r requirements.txt
+  - pip3 install lxml
+  - pip3 install html5lib
+
+# command to run tests
+script:
+  - flask run &
+  - pytest
