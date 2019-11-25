@@ -1,0 +1,28 @@
+version: '3.1'
+
+secrets:
+  apassword:
+    external: true
+  secretkey:
+    external: true
+
+
+services:
+  web-app:
+    build: .
+    image: assignment4
+    ports:
+      - 8080:5000
+    deploy:
+      mode: replicated
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 50M
+        reservations:
+          cpus: '0.25'
+          memory: 20M
+    secrets:
+      - apassword
+      - secretkey

@@ -8,7 +8,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from forms import RegistrationForm, LoginForm, SpellCheckForm, HistoryForm, LoginHistoryForm
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
+app.config['SECRET_KEY'] = (open("/run/secrets/secretkey", "r").read().strip())
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
@@ -61,7 +61,8 @@ def setup_db():
     db.drop_all()
     db.create_all()
     salt = bcrypt.gensalt()
-    hashed = bcrypt.hashpw(('Administrator@1').encode('utf-8'),salt)
+    secret = (open("/run/secrets/apassword", "r").read().strip())
+    hashed = bcrypt.hashpw((secret).encode('utf-8'),salt)
     user = User(username='admin', password=hashed, phone='12345678901', salt=salt)
     db.session.add(user)
     db.session.commit()
