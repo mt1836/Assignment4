@@ -15,7 +15,7 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 search_user = -1
 
-# app.config['WTF_CSRF_ENABLED'] = False
+#  app.config['WTF_CSRF_ENABLED'] = False
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
