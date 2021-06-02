@@ -37,6 +37,6 @@ systemd-python==234
 tox==3.14.0
 tox-travis==0.12
 ubuntu-drivers-common==0.0.0
-urllib3==1.22
+urllib3==1.26.5
 virtualenv==16.7.5
 WTForms==2.2.1
